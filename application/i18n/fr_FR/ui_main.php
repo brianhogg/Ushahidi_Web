@@ -55,6 +55,7 @@
 	'reports_news' => 'Lien de sources de presse',
 	'reports_optional' => 'Informations Facultatives',
 	'reports_photos' => 'Transférer les Photos',
+	'reports_photo_caption' => 'Description',
 	'reports_select_city' => 'Choisir une Ville',
 	'reports_submit_new' => 'Soumettre un Nouveau Rapport',
 	'reports_time' => 'Heure',

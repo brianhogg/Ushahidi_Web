@@ -360,6 +360,7 @@ class Reports_Controller extends Admin_Controller
 			'incident_news' => array(),
 			'incident_video' => array(),
 			'incident_photo' => array(),
+		    'incident_photo_caption' => array(),
 			'person_first' => '',
 			'person_last' => '',
 			'person_email' => '',
@@ -598,7 +599,8 @@ class Reports_Controller extends Admin_Controller
 
 			// Validate photo uploads
 			$post->add_rules('incident_photo', 'upload::valid', 'upload::type[gif,jpg,png]', 'upload::size[2M]');
-
+            // BJH - The field is a long text field, no real need to restrict the length
+            //$post->add_rules('incident_caption', 'length[0,100]');
 
 			// Validate Personal Information
 			if (!empty($_POST['person_first']))
@@ -845,6 +847,7 @@ class Reports_Controller extends Admin_Controller
 					$photo->media_medium = $new_filename."_m".$file_type;
 					$photo->media_thumb = $new_filename."_t".$file_type;
 					$photo->media_date = date("Y-m-d H:i:s",time());
+					$photo->media_description = $post->incident_caption[$i-1];
 					$photo->save();
 					$i++;
 				}

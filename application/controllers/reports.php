@@ -269,6 +269,7 @@ class Reports_Controller extends Main_Controller {
 			'incident_news' => array(),
 			'incident_video' => array(),
 			'incident_photo' => array(),
+		    'incident_caption' => array(),
 			'person_first' => '',
 			'person_last' => '',
 			'person_email' => '',
@@ -495,6 +496,7 @@ class Reports_Controller extends Main_Controller {
 					$photo->media_medium = $new_filename."_m".$file_type;
 					$photo->media_thumb = $new_filename."_t".$file_type;
 					$photo->media_date = date("Y-m-d H:i:s",time());
+					$photo->media_description = $post->incident_caption[$i-1];
 					$photo->save();
 					$i++;
 				}

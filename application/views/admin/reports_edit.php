@@ -396,8 +396,9 @@
 
                         						$thumb = $photo->media_thumb;
                         						$photo_link = $photo->media_link;
+                        						$photo_description = $photo->media_description;
 												$prefix = url::base().Kohana::config('upload.relative_directory');
-                        						print "<a class='photothumb' rel='lightbox-group1' href='$prefix/$photo_link'>";
+                        						print "<a title='$photo_description' class='photothumb' rel='lightbox-group1' href='$prefix/$photo_link'>";
                         						print "<img src=\"$prefix/$thumb\" >";
                         						print "</a>";
 
@@ -412,6 +413,7 @@
 								<?php
 								$this_div = "divPhoto";
 								$this_field = "incident_photo";
+								$this_caption_field = "incident_caption";
 								$this_startid = "photo_id";
 								$this_field_type = "file";
 					
@@ -420,7 +422,11 @@
 									$i = 1;
 									print "<div class=\"row link-row\">";
 									print form::upload($this_field . '[]', '', ' class="text long"');
-									print "<a href=\"#\" class=\"add\" onClick=\"addFormField('$this_div','$this_field','$this_startid','$this_field_type'); return false;\">add</a>";
+									print "</div>";
+									print "<div class=\"row link-row\"><h4>".Kohana::lang('ui_main.reports_photo_caption')."</h4></div>";
+									print "<div class=\"row link-row\">";
+									print form::input($this_caption_field . '[]', '', ' class="text long"');
+									print "<a href=\"#\" class=\"add\" onClick=\"addPhotoFields('$this_div','$this_field','$this_caption_field','$this_startid'); return false;\">add</a>";
 									print "</div>";
 								}
 								else
