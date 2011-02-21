@@ -496,7 +496,8 @@ class Reports_Controller extends Main_Controller {
 					$photo->media_medium = $new_filename."_m".$file_type;
 					$photo->media_thumb = $new_filename."_t".$file_type;
 					$photo->media_date = date("Y-m-d H:i:s",time());
-					$photo->media_description = $post->incident_caption[$i-1];
+					if (isset($post->incident_caption[$i-1]))
+					    $photo->media_description = $post->incident_caption[$i-1];
 					$photo->save();
 					$i++;
 				}
@@ -833,7 +834,8 @@ class Reports_Controller extends Main_Controller {
 				}
 				elseif ($media->media_type == 1)
 				{
-					$incident_photo[] = $media->media_link;
+				    // Pass the entire media object so the description can also be obtained
+					$incident_photo[] = $media;
 				}
 			}
 

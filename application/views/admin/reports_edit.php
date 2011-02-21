@@ -403,6 +403,7 @@
                         						print "</a>";
 
                         						print "&nbsp;&nbsp;<a href=\"#\" onClick=\"deletePhoto('".$photo->id."', 'photo_".$photo->id."'); return false;\" >".Kohana::lang('ui_main.delete')."</a>";
+                        						print "<div class=\"report_caption_edit\">".form::input("incident_caption_edit_".$photo->id, $photo_description, ' class="text long"')."</div>";
                         						print "</div>";
                         					}
                         				}

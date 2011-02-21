@@ -1191,12 +1191,15 @@ input.long2 {
 	float:right;
 }
 .report-form .report_thumbs {
-	border-bottom:1px #ccc dotted;
+	/*border-bottom:1px #ccc dotted;*/
 	margin:0 0 10px 0;
 }
 .report-form .report_thumbs img {
 	border:1px #ccc solid;
 	padding:3px;
+}
+.report-form .report_caption_edit input {
+	margin: 5px 0 10px 0;
 }
 .status_yes{
 	color:#009900;

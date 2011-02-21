@@ -40,6 +40,7 @@
 					$comment_count = $incident->comment->count();
 					
 					$incident_thumb = url::site()."media/img/report-thumb-default.jpg";
+					$incident_thumb_caption = "";
 					$media = $incident->media;
 					if ($media->count())
 					{
@@ -49,6 +50,7 @@
 							{ // Get the first thumb
 								$prefix = url::base().Kohana::config('upload.relative_directory');
 								$incident_thumb = $prefix."/".$photo->media_thumb;
+								$incident_thumb_caption = $photo->media_description;
 								break;
 							}
 						}
@@ -58,7 +60,7 @@
 
 						<div class="r_media">
 							<p class="r_photo"> <a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-								<img src="<?php echo $incident_thumb; ?>" height="59" width="89" /> </a>
+								<img title="<?php echo $incident_thumb_caption; ?>" src="<?php echo $incident_thumb; ?>" height="59" width="89" /> </a>
 							</p>
 
 							<!-- Only show this if the report has a video -->

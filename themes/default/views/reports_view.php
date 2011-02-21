@@ -153,9 +153,9 @@
 						<?php
 						foreach ($incident_photos as $photo)
 						{
-							$thumb = str_replace(".","_t.",$photo);
+							$thumb = str_replace(".","_t.",$photo->media_link);
 							$prefix = url::base().Kohana::config('upload.relative_directory');
-							echo '<a class="photothumb" rel="lightbox-group1" href="'.$prefix.'/'.$photo.'"><img src="'.$prefix.'/'.$thumb.'"/></a> ';
+							echo '<a class="photothumb" rel="lightbox-group1" title="'.$photo->media_description.'" href="'.$prefix.'/'.$photo->media_link.'"><img src="'.$prefix.'/'.$thumb.'"/></a> ';
 						}
 						?>
 				</div>

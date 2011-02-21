@@ -847,11 +847,21 @@ class Reports_Controller extends Admin_Controller
 					$photo->media_medium = $new_filename."_m".$file_type;
 					$photo->media_thumb = $new_filename."_t".$file_type;
 					$photo->media_date = date("Y-m-d H:i:s",time());
-					$photo->media_description = $post->incident_caption[$i-1];
+					if (isset($post->incident_caption[$i-1]))
+					    $photo->media_description = $post->incident_caption[$i-1];
 					$photo->save();
 					$i++;
 				}
 
+				// Edit captions of existing photos
+				foreach ($incident->media as $photo)
+				{
+				    if ($photo->media_type == 1 and isset($post->{"incident_caption_edit_$photo->id"}))
+				    {
+				        $photo->media_description = $post->{"incident_caption_edit_$photo->id"};
+				        $photo->save();
+				    }
+				}
 
 				// STEP 5: SAVE PERSONAL INFORMATION
 				ORM::factory('Incident_Person')->where('incident_id',$incident->id)->delete_all();		// Delete Previous Entries
