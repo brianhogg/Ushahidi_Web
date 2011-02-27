@@ -183,15 +183,16 @@
 			
 			var html = "<div id=\"" + photo_field + "_" + id + "\" class=\"report_row\">";
 			html += "<div class=\"report_row\"><input type=\"file\" name=\"" + photo_field + "[]\" class=\"file long2\" /></div>";
-			html += "<div class=\"report_row\"><h4><?php echo Kohana::lang('ui_main.reports_photo_caption'); ?></h4></div>";
-			html += "<div class=\"report_row\"><input type=\"text\" name=\"" + caption_field + "[]\" class=\"text long2\" /><a href=\"#\" class=\"add\" onClick=\"addPhotoFields('" + div + "','" + photo_field + "','" + caption_field + "','" + hidden_id + "'); return false;\">add</a><a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + photo_field + "_" + id + "\"); return false;'>remove</a></div>";
+			html += "<div class=\"report_row\"><input type=\"text\" id=\"incident_caption\" title=\"Image Description\" name=\"" + caption_field + "[]\" class=\"findtext text long2\" /><a href=\"#\" class=\"add\" onClick=\"addPhotoFields('" + div + "','" + photo_field + "','" + caption_field + "','" + hidden_id + "'); return false;\">add</a><a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + photo_field + "_" + id + "\"); return false;'>remove</a></div>";
 			html += "</div>";
 			
 			$("#" + div).append(html);
 			$("#" + photo_field + "_" + id).effect("highlight", {}, 800);
 
 			id = (id - 1) + 2;
-			document.getElementById(hidden_id).value = id;			
+			document.getElementById(hidden_id).value = id;	
+			$("#" + photo_field + "_" + id + ", :input").hint();
+					
 		}		
 
 		function removeFormField(id) {
@@ -327,6 +328,7 @@
 			
 			// Textbox Hints
 			$("#location_find").hint();
+			$("#divPhoto, :input").hint();
 			
 			// Toggle Date Editor
 			$('a#date_toggle').click(function() {

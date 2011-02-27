@@ -272,11 +272,10 @@
 						{
 							$i = 1;
 							print "<div class=\"report_row\">";
-							print form::upload($this_field . '[]', '', ' class="text long2"');
+							print form::upload($this_field . '[]', '', ' class="file long2"');
 							print "</div>";
-							print "<div class=\"report_row\"><h4>".Kohana::lang('ui_main.reports_photo_caption')."</h4></div>";
 							print "<div class=\"report_row\">";
-							print form::input($this_caption_field . '[]', '', ' class="text long2"');
+							print form::input($this_caption_field . '[]', '', ' title="Image Description" class="incident_caption text long2"');
 							print "<a href=\"#\" class=\"add\" onClick=\"addPhotoFields('$this_div','$this_field','$this_caption_field','$this_startid'); return false;\">add</a>";
 							print "</div>";
 						}

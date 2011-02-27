@@ -424,9 +424,8 @@
 									print "<div class=\"row link-row\">";
 									print form::upload($this_field . '[]', '', ' class="text long"');
 									print "</div>";
-									print "<div class=\"row link-row\"><h4>".Kohana::lang('ui_main.reports_photo_caption')."</h4></div>";
 									print "<div class=\"row link-row\">";
-									print form::input($this_caption_field . '[]', '', ' class="text long"');
+									print form::input($this_caption_field . '[]', '', ' title="Image Description" class="text long"');
 									print "<a href=\"#\" class=\"add\" onClick=\"addPhotoFields('$this_div','$this_field','$this_caption_field','$this_startid'); return false;\">add</a>";
 									print "</div>";
 								}

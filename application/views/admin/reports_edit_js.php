@@ -345,6 +345,7 @@
 			
 			// Textbox Hints
 			$("#location_find").hint();
+			$("#divPhoto, :input").hint();
 			
 			/* Dynamic categories */
 			$('#category_add').hide();
@@ -587,15 +588,15 @@
 			
 			var html = "<div id=\"" + photo_field + "_" + id + "\" class=\"row link-row second\">";
 			html += "<div class=\"row link-row\"><input type=\"file\" name=\"" + photo_field + "[]\" class=\"file long\" /></div>";
-			html += "<div class=\"row link-row\"><h4><?php echo Kohana::lang('ui_main.reports_photo_caption'); ?></h4></div>";
-			html += "<div class=\"row link-row\"><input type=\"text\" name=\"" + caption_field + "[]\" class=\"text long\" /><a href=\"#\" class=\"add\" onClick=\"addPhotoFields('" + div + "','" + photo_field + "','" + caption_field + "','" + hidden_id + "'); return false;\">add</a><a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + photo_field + "_" + id + "\"); return false;'>remove</a></div>";
+			html += "<div class=\"row link-row\"><input type=\"text\" name=\"" + caption_field + "[]\" title=\"Image Description\" class=\"text long\" /><a href=\"#\" class=\"add\" onClick=\"addPhotoFields('" + div + "','" + photo_field + "','" + caption_field + "','" + hidden_id + "'); return false;\">add</a><a href=\"#\" class=\"rem\"  onClick='removeFormField(\"#" + photo_field + "_" + id + "\"); return false;'>remove</a></div>";
 			html += "</div>";
 			
 			$("#" + div).append(html);
 			$("#" + photo_field + "_" + id).effect("highlight", {}, 800);
 
 			id = (id - 1) + 2;
-			document.getElementById(hidden_id).value = id;			
+			document.getElementById(hidden_id).value = id;		
+			$("#" + photo_field + "_" + id + ", :input").hint();				
 		}
 
 		function removeFormField(id) {
